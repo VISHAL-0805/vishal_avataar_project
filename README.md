@@ -1,6 +1,5 @@
 # vishal_avataar_project
 [Open Google Colab Notebook](https://colab.research.google.com/drive/1Fk1wel9FsPWB2HbesL6y72Y-c12t1VGQ?usp=sharing)
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,46 +13,40 @@
 <p>This project integrates GroundingDINO, Segment Anything (SAM), and Stable Diffusion for object detection, segmentation, and inpainting tasks. Below are the steps to set up and use this project.</p>
 
 <h2>Installation</h2>
-<ol>
-    <li>Clone the repository:</li>
-    <pre><code>git clone https://github.com/IDEA-Research/Grounded-Segment-Anything</code></pre>
+<p>1. Clone the repository:</p>
+<pre><code>git clone https://github.com/IDEA-Research/Grounded-Segment-Anything</code></pre>
 
-    <li>Navigate to the project directory:</li>
-    <pre><code>cd Grounded-Segment-Anything</code></pre>
+<p>2. Navigate to the project directory:</p>
+<pre><code>cd Grounded-Segment-Anything</code></pre>
 
-    <li>Install the dependencies:</li>
-    <pre><code>pip install -r requirements.txt</code></pre>
+<p>3. Install the dependencies:</p>
+<pre><code>pip install -r requirements.txt</code></pre>
 
-    <li>Install the <strong>GroundingDINO</strong> model:</li>
-    <pre><code>cd GroundingDINO && pip install .</code></pre>
+<p>4. Install the <strong>GroundingDINO</strong> model:</p>
+<pre><code>cd GroundingDINO && pip install .</code></pre>
 
-    <li>Install the <strong>Segment Anything</strong> model:</li>
-    <pre><code>cd ../segment_anything && pip install .</code></pre>
-</ol>
+<p>5. Install the <strong>Segment Anything</strong> model:</p>
+<pre><code>cd ../segment_anything && pip install .</code></pre>
 
 <h2>Model Loading</h2>
 <p>Before you run inference, make sure you load the required models.</p>
-<ol>
-    <li>Load the GroundingDINO model:</li>
-    <pre><code>
-    from GroundingDINO.groundingdino.models import build_model
-    model = build_model(args)
-    </code></pre>
 
-    <li>Download SAM checkpoints:</li>
-    <pre><code>wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth</code></pre>
+<p>1. Load the GroundingDINO model:</p>
+<pre><code>from GroundingDINO.groundingdino.models import build_model
+model = build_model(args)
+</code></pre>
 
-    <li>Load SAM model in your code:</li>
-    <pre><code>
-    from segment_anything import build_sam, SamPredictor
-    sam_predictor = SamPredictor(build_sam(checkpoint="sam_vit_h_4b8939.pth").to(device))
-    </code></pre>
-</ol>
+<p>2. Download SAM checkpoints:</p>
+<pre><code>wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth</code></pre>
+
+<p>3. Load SAM model in your code:</p>
+<pre><code>from segment_anything import build_sam, SamPredictor
+sam_predictor = SamPredictor(build_sam(checkpoint="sam_vit_h_4b8939.pth").to(device))
+</code></pre>
 
 <h2>Inference</h2>
 <p>Use the following code to download and preprocess an image, and then use the models for inference.</p>
-<pre><code>
-import requests
+<pre><code>import requests
 from PIL import Image
 from io import BytesIO
 
@@ -79,4 +72,3 @@ download_image(image_url, local_image_path)
 
 </body>
 </html>
-
